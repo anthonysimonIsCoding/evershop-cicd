@@ -1,0 +1,130 @@
+
+      import React from 'react';
+      import ReactDOM from 'react-dom';
+      import { Area } from '@evershop/evershop/components/common';
+      import {HydrateFrontStore} from '@evershop/evershop/components/common';
+      
+import e749d0c2d08431465d99a3c437b4c2789 from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/catalog/pages/frontStore/all/SearchBox.js';
+import e7d1b9ae1dff1e4880de420b29342737e from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/catalog/pages/frontStore/catalogSearch/General.js';
+import e60ff17c3ad418f664767c515ca59ae8c from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/catalog/pages/frontStore/catalogSearch/Pagination.js';
+import e6efe6fea6055feb1997e5b2853d21e1e from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/catalog/pages/frontStore/catalogSearch/Products.js';
+import e8583cf13b0eafd626131e86b0e252a89 from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/catalog/pages/frontStore/catalogSearch/SearchPage.js';
+import e2241281df6161f8c0744dc59808ab637 from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/catalog/pages/frontStore/catalogSearch/Sorting.js';
+import e49ac096dfe906740f0c3f7ff8e12e1a0 from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/checkout/pages/frontStore/all/MiniCart.js';
+import e45913650180cbd18ad9c29a51dfcf1a0 from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/cms/pages/frontStore/all/Breadcrumb.js';
+import eeda61aa0413a36817c91c0e165203255 from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/cms/pages/frontStore/all/Footer.js';
+import ecbf72d95212af663e8cec41573eee35b from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/cms/pages/frontStore/all/HeadTags.js';
+import e67a08c1a000ecef39b087fb1dca2351f from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/cms/pages/frontStore/all/Layout.js';
+import ee9b98c29aa5fa989c8f80b752d9583f8 from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/cms/pages/frontStore/all/Logo.js';
+import eaf4b89b1069319b85f41a68ad909e5d7 from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/cms/pages/frontStore/all/Notification.js';
+import ea125ac8a8b17f0f1114217b5f161c34b from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/modules/customer/pages/frontStore/all/UserIcon.js';
+import collection_products from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/components/frontStore/widgets/CollectionProducts.js';
+import text_block from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/components/frontStore/widgets/TextBlock.js';
+import basic_menu from 'file:///C:/CodingStuff/KTPM/node_modules/@evershop/evershop/dist/components/frontStore/widgets/BasicMenu.js';
+Area.defaultProps.components = {
+  'icon-wrapper': {
+    e749d0c2d08431465d99a3c437b4c2789: {
+      id: 'e749d0c2d08431465d99a3c437b4c2789',
+      sortOrder: 5,
+      component: { default: e749d0c2d08431465d99a3c437b4c2789 }
+    },
+    e49ac096dfe906740f0c3f7ff8e12e1a0: {
+      id: 'e49ac096dfe906740f0c3f7ff8e12e1a0',
+      sortOrder: 10,
+      component: { default: e49ac096dfe906740f0c3f7ff8e12e1a0 }
+    },
+    ea125ac8a8b17f0f1114217b5f161c34b: {
+      id: 'ea125ac8a8b17f0f1114217b5f161c34b',
+      sortOrder: 30,
+      component: { default: ea125ac8a8b17f0f1114217b5f161c34b }
+    }
+  },
+  content: {
+    e7d1b9ae1dff1e4880de420b29342737e: {
+      id: 'e7d1b9ae1dff1e4880de420b29342737e',
+      sortOrder: 5,
+      component: { default: e7d1b9ae1dff1e4880de420b29342737e }
+    },
+    e8583cf13b0eafd626131e86b0e252a89: {
+      id: 'e8583cf13b0eafd626131e86b0e252a89',
+      sortOrder: 10,
+      component: { default: e8583cf13b0eafd626131e86b0e252a89 }
+    },
+    e45913650180cbd18ad9c29a51dfcf1a0: {
+      id: 'e45913650180cbd18ad9c29a51dfcf1a0',
+      sortOrder: 0,
+      component: { default: e45913650180cbd18ad9c29a51dfcf1a0 }
+    }
+  },
+  oneColumn: {
+    e60ff17c3ad418f664767c515ca59ae8c: {
+      id: 'e60ff17c3ad418f664767c515ca59ae8c',
+      sortOrder: 30,
+      component: { default: e60ff17c3ad418f664767c515ca59ae8c }
+    },
+    e6efe6fea6055feb1997e5b2853d21e1e: {
+      id: 'e6efe6fea6055feb1997e5b2853d21e1e',
+      sortOrder: 25,
+      component: { default: e6efe6fea6055feb1997e5b2853d21e1e }
+    },
+    e2241281df6161f8c0744dc59808ab637: {
+      id: 'e2241281df6161f8c0744dc59808ab637',
+      sortOrder: 15,
+      component: { default: e2241281df6161f8c0744dc59808ab637 }
+    }
+  },
+  footer: {
+    eeda61aa0413a36817c91c0e165203255: {
+      id: 'eeda61aa0413a36817c91c0e165203255',
+      sortOrder: 10,
+      component: { default: eeda61aa0413a36817c91c0e165203255 }
+    }
+  },
+  head: {
+    ecbf72d95212af663e8cec41573eee35b: {
+      id: 'ecbf72d95212af663e8cec41573eee35b',
+      sortOrder: 5,
+      component: { default: ecbf72d95212af663e8cec41573eee35b }
+    }
+  },
+  body: {
+    e67a08c1a000ecef39b087fb1dca2351f: {
+      id: 'e67a08c1a000ecef39b087fb1dca2351f',
+      sortOrder: 1,
+      component: { default: e67a08c1a000ecef39b087fb1dca2351f }
+    },
+    eaf4b89b1069319b85f41a68ad909e5d7: {
+      id: 'eaf4b89b1069319b85f41a68ad909e5d7',
+      sortOrder: 10,
+      component: { default: eaf4b89b1069319b85f41a68ad909e5d7 }
+    }
+  },
+  header: {
+    ee9b98c29aa5fa989c8f80b752d9583f8: {
+      id: 'ee9b98c29aa5fa989c8f80b752d9583f8',
+      sortOrder: 10,
+      component: { default: ee9b98c29aa5fa989c8f80b752d9583f8 }
+    }
+  },
+  '*': {
+    collection_products: {
+      id: 'collection_products',
+      sortOrder: 0,
+      component: { default: collection_products }
+    },
+    text_block: {
+      id: 'text_block',
+      sortOrder: 0,
+      component: { default: text_block }
+    },
+    basic_menu: {
+      id: 'basic_menu',
+      sortOrder: 0,
+      component: { default: basic_menu }
+    }
+  }
+} 
+ReactDOM.hydrate(
+        React.createElement(HydrateFrontStore, null),
+        document.getElementById('app')
+      );
