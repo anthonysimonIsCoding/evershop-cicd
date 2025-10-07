@@ -1,4 +1,4 @@
-name: Node.js + EverShop CI
+name: Node.js + Cypress + Postgres CI
 
 on:
   push:
@@ -8,9 +8,7 @@ on:
 
 jobs:
   ci:
-
     runs-on: ubuntu-latest
-
     services:
       postgres:
         image: postgres:16
@@ -22,41 +20,46 @@ jobs:
           - 5432:5432
         options: >-
           --health-cmd "pg_isready -U postgres"
-          --health-interval 10s
+          --health-interval 5s
           --health-timeout 5s
           --health-retries 5
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
+    env:
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: 123
+      DB_NAME: postgres
+      NODE_ENV: test
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Build project
-      run: npm run build --if-present
+      - name: Build project
+        run: npm run build --if-present
 
-    - name: Start EverShop server in background
-      env:
-        NODE_ENV: production
-        DB_HOST: localhost
-        DB_PORT: 5432
-        DB_USER: postgres
-        DB_PASSWORD: 123
-        DB_NAME: postgres
-        SUPPRESS_NO_CONFIG_WARNING: 1
-      run: |
-        npm run start &
-        npx wait-on http://localhost:3000 --timeout 180000
+      - name: Wait for Postgres
+        run: |
+          echo "Waiting for Postgres to be ready..."
+          for i in {1..30}; do
+            pg_isready -h localhost -p 5432 -U postgres && break
+            sleep 2
+          done
 
-    - name: Run Cypress tests
-      run: npx cypress run --browser chrome --headless
+      - name: Start App in background
+        run: |
+          npm run start &
+          echo "Waiting for app to be ready..."
+          npx wait-on http://localhost:3000
+
+      - name: Run Cypress tests
+        run: npx cypress run --browser chrome --headless
