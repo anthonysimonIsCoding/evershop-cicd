@@ -1,22 +1,20 @@
-name: EverShop CI
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: test
-      DB_HOST: localhost
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: 123
-      DB_NAME: postgres
-      SUPPRESS_NO_CONFIG_WARNING: true  # tắt cảnh báo config
+    services:
+      postgres:
+        image: postgres:14
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 123
+          POSTGRES_DB: postgres
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,28 +22,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20   # Joi yêu cầu Node >= 20
-          cache: 'npm'
+          node-version: 20
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Start PostgreSQL
-        uses: harmon758/postgresql-action@v2
-        with:
-          postgresql version: '16'
-          postgresql db: ${{ env.DB_NAME }}
-          postgresql user: ${{ env.DB_USER }}
-          postgresql password: ${{ env.DB_PASSWORD }}
-
       - name: Start EverShop server
         run: |
-          echo "Starting EverShop server..."
-          npm run start &> server.log &   # log đầy đủ ra file
-          echo "Waiting for server to be ready..."
+          npm run start &> server.log &
           npx wait-on --timeout 120000 http://localhost:3000
-          echo "Server is ready!"
-          tail -n 50 server.log           # show 50 dòng log cuối cùng
+          tail -n 50 server.log
 
       - name: Run tests
         run: npm test
